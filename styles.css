@@ -1,1 +1,25 @@
 /*  your css code here. If applicable */
+body {
+  margin: 0;
+  padding: 20px;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25px, 1fr));
+  grid-template-rows: auto;
+  width: 500px;
+  gap: 2px;
+}
+
+.square {
+  width: 25px;
+  height: 25px;
+  background-color: #1d1d1d;
+  transition: background-color 1s ease;
+}
