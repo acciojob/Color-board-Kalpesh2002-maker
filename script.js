@@ -7,20 +7,15 @@ for (let i = 0; i < SQUARES; i++) {
   square.classList.add('square');
 
   square.addEventListener('mouseenter', () => {
-    setColor(square);
-    setTimeout(() => removeColor(square), 1000); // 1 second
+    const color = getRandomColor();
+    square.style.backgroundColor = color;
+
+    setTimeout(() => {
+      square.style.backgroundColor = '#1d1d1d';
+    }, 1000);
   });
 
   board.appendChild(square);
-}
-
-function setColor(element) {
-  const color = getRandomColor();
-  element.style.backgroundColor = color;
-}
-
-function removeColor(element) {
-  element.style.backgroundColor = '#1d1d1d'; // Original color
 }
 
 function getRandomColor() {
