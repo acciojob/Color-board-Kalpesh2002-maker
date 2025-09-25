@@ -1,30 +1,27 @@
 //your JS code here. If required.
-const container = document.querySelector('.container');
+const container = document.getElementById("container");
+const colors = ["#e74c3c", "#8e44ad", "#3498db", "#e67e22", "#2ecc71"];
+const SQUARES = 800;
 
-    // generate 800 squares
-    for (let i = 0; i < 800; i++) {
-      const square = document.createElement('div');
-      square.classList.add('square');
+for (let i = 0; i < SQUARES; i++) {
+  const square = document.createElement("div");
+  square.classList.add("square");
 
-      square.addEventListener('mouseenter', () => {
-        const color = getRandomColor();
-        square.style.backgroundColor = color;
+  square.addEventListener("mouseover", () => setColor(square));
+  square.addEventListener("mouseout", () => removeColor(square));
 
-        // reset back after 1 second
-        setTimeout(() => {
-          square.style.backgroundColor = '#222';
-        }, 1000);
-      });
+  container.appendChild(square);
+}
 
-      container.appendChild(square);
-    }
+function setColor(element) {
+  const color = getRandomColor();
+  element.style.background = color;
+}
 
-    // function to get random hex color
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
+function removeColor(element) {
+  element.style.background = "#1d1d1d";
+}
+
+function getRandomColor() {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
